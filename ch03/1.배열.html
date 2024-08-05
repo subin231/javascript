@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h4>배열</h4>
+    <script>
+    const arr = [1,2,3,4,5]
+
+    document.write('arr[0] :' + arr[0] + '<br>')
+    document.write('arr[1] :' + arr[1] + '<br>')
+
+    for(let i=0; i<arr.length; i++){
+        document.write('arr['+i+'] :' +arr[i]+'<br>')
+    }
+
+    for(let i in arr){
+        document.write('arr['+i+']' + arr[i] + '<br>')
+    }
+
+    for(let e of arr){
+        document.write(e+'<br>')
+    }
+
+
+    //2차원 배열
+    const arr2d = [[1,2,3], [4,5,6], [7,8,9]];
+
+
+    for(let arr of arr2d){
+        for(let a of arr){
+            document.write(a + ', <br><br>')
+        }
+    }
+
+    //3차원 배열
+    const arr3d = [[[1,2,3],
+                    [4,5,6],
+                    [7,8,9]],
+                  [[10,11,12],
+                   [13,14,15],
+                   [16,17,18]],
+                  [[19,20,21],
+                   [22,23,24],
+                   [25,26,27]]];
+
+    //3, 7, 11, 17, 21, 25
+    
+    document.write(arr3d[0][0][2])
+    document.write(arr3d[0][2][0])
+    document.write(arr3d[1][0][1])
+    document.write(arr3d[1][2][1])
+    document.write(arr3d[2][0][2])
+    document.write(arr3d[2][2][0])
+
+
+
+    </script>
+</body>
+</html>
