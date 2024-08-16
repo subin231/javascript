@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3.이벤트 객체</title>
+    <!--
+        날짜 : 2024/08/08
+        이름 : 조수빈
+        내용 : 자바스크립트 이벤트 객체 실습하기
+    -->
+        <style>
+            #container{
+                width: 600px;
+                height: 300px;
+                border: 1px solid black;
+            }
+        </style>
+        <script>
+            window.onload = function(){
+                const container = document.getElementById('container');
+                const span = document.getElementsByTagName('span');
+
+                container.addEventListener('mousemove', function(e){
+                    console.log('mousmove');
+                    span[0].innerText = e.clientX;
+                    span[1].innerText = e.clientY;
+                    span[2].innerText = e.pageX;
+                    span[3].innerText = e.pageY;
+                    span[4].innerText = e.screenX;
+                    span[5].innerText = e.screenY;
+                    span[6].innerText = e.target;
+                    span[7].innerText = e.target.tegName;
+                    span[8].innerText = e.target.id;
+                    span[9].innerText = e.timeStamp;
+                })
+
+
+                // 기본 이벤트 취소
+                const a = document.getElementsByTagName('a');
+                const form = document.getElementsByTagName('form')[0];
+
+                a[0].addEventListener('click', (e)=>{
+                    e.preventDefault(); //기본 이벤트 취소
+                    alert('naver');
+                });
+                a[1].addEventListener('click', (e)=>{
+                    e.preventDefault(); //기본 이벤트 취소
+                    alert('daum');
+                });
+
+                form.addEventListener('submit', (e)=>{
+                    e.preventDefault();
+
+                    const result = document.getElementById('result');
+                    const span = result.getElementsByTagName('span');
+
+                    span[0].innerText = e.target.userID.value;
+                    span[1].innerText = e.target.pass.value;
+
+
+                    alert('전송');
+                });
+
+
+
+            }
+
+        </script>
+</head>
+<body>
+    <h3>이벤트 객체</h3>
+    <div id="container"></div>
+    <h4>이벤트 객체 주요속성</h4>
+    <p>
+        clientX : <span>0</span><br>
+        clientY : <span>0</span><br>
+        pageX : <span>0</span><br>
+        pageY : <span>0</span><br>
+        screenX : <span>0</span><br>
+        screenY : <span>0</span><br>
+        target : <span>0</span><br>
+        target_tagName : <span>0</span><br>
+        target_id : <span>0</span><br>
+        timestamp : <span>0</span><br>
+    </p>
+
+    <h4>이벤트 취소</h4>
+    <a href="https://www.naver.com">네이버</a>
+    <a href="https://www.daum.net">다음</a>
+
+    <form action="https://www.google.com" method="get">
+        <input type="text" name="userID"><br>
+        <input type="text" name="pass"><br>
+        <input type="submit" value="전송"><br>
+    </form>
+
+    <div id="result">
+        <span></span><br>
+        <span></span>
+    </div>
+
+</body>
+</html>

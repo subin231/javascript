@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Image Slider with Mouse Movement</title>
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;            
+        }
+        #slider {
+            width: 500px; /* 슬라이더 너비 */
+            height: 300px; /* 슬라이더 높이 */
+            overflow: hidden;
+            position: relative;
+            border: 1px solid #ddd;
+            background-color: #fff; /* 슬라이더 배경 색상 */
+        }
+        #slider img {
+            width: 100%;
+            height: auto;
+            display: block;
+            object-fit: cover; /* 이미지가 슬라이더 크기에 맞게 잘림 */
+        }
+    </style>
+    <script>
+        window.onload = function(){
+            const totalImages = 120;
+            const slider = document.getElementById('slider');
+
+            slider.addEventListener('mousemove', function(e){
+
+                const sliderRact = slider.getBoundingClientRect();
+                const mouseX = event.clientX - sliderRact.left;
+
+                const sliderWidth = slider.offsetWidth;
+                const imgIndex = Math.min();
+                console.log('x : ' + x);
+            });
+
+
+
+        };
+
+        function title_info(){
+            var img_src;
+            for(var i=0; i<120; i++){
+                img_src = '실습이미지/car/car'+i+'.jpg';
+            }
+            return img_src;
+        }
+    </script>
+
+</head>
+<body>
+    <div id="slider">
+        <img src= 실습이미지/car/car0.jpg alt="Slider Image">
+    </div>
+
+    
+</body>
+</html>

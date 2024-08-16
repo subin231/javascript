@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!--
+        날짜 : 2024/08/13
+        이름 : 조수빈
+        내용 : JSON 실습하기
+    -->
+    <script>
+        window.onload = function(){
+            const btnUser1 = document.getElementById('btnUser1');
+            const user1 = document.getElementById('user1');
+            const span = user1.getElementsByTagName('span');
+
+            btnUser1.onclick = ()=>{
+                const xhr = new XMLHttpRequest();
+                xhr.open('GET', 'http://127.0.0.1:5501/ch06/data/user1.json');
+                xhr.send();
+
+            //응답 처리 이벤트
+                xhr.onreadystatechange = function(){
+
+                    if (xhr.readyState === XMLHttpRequest.DONE) {
+                        
+                        if (xhr.status === 200){
+                            console.log(xhr.responseText);
+                            const result = JSON.parse(xhr.responseText);
+
+                            span[0].innerText = result.uid;
+                            span[1].innerText = result.name;
+                            span[2].innerText = result.age;
+                            span[3].innerText = result.addr;
+
+                        }
+                    }
+                }
+            }//btnUser1 end
+
+        const btnUser2 = document.getElementById('btnUser2');
+        const user2 = document.getElementById('user2');
+        const span2 = user2.getElementsByTagName('span');
+        
+        btnUser2.onclick = ()=>{
+            
+            fetch('http://127.0.0.1:5501/ch06/data/user2.json')
+                .then((response)=>{
+                    return response.json();
+                })
+                .then((data)=>{
+                    console.log(data);
+                    span2[0].innerText = data.uid;
+                    span2[1].innerText = data.name;
+                    span2[2].innerText = data.age;
+                    span2[3].innerText = data.addr;
+                })
+                .catch((err)=>{
+                    console.log(err);
+                });
+        }
+
+        const btnUser3 = document.getElementById('btnUser3');
+        const table = document.getElementsByTagName('table');
+
+        btnUser3.addEventListener('click', function(){
+            
+            fetch('http://127.0.0.1:5501/ch06/data/users.json')
+                .then((response)=>{
+                    return response.json();
+                })
+                .then((data)=>{
+                    for(const user of data.users){                        
+                        const row = `<tr>
+                                        <td>${user.uid}</td>
+                                        <td>${user.name}</td>
+                                        <td>${user.age}</td>
+                                        <td>${user.addr}</td>
+                                    </tr>`;
+                                    
+                        table.insertAdjacentHTML('beforeend', row);
+                    }
+                    
+                })
+                .catch((err)=>{
+                    console.log(err);
+                });
+        })
+
+
+        }//onload end
+    </script>
+</head>
+    
+<body>
+    <button id="btnUser1">user1</button>
+    <p id="user1">
+        아이디 : <span></span><br>
+        이름 : <span></span><br>
+        나이 : <span></span><br>
+        주소 : <span></span><br>
+    </p>
+    <button id="btnUser2">user2</button>
+    <p id="user2">
+        아이디 : <span></span><br>
+        이름 : <span></span><br>
+        나이 : <span></span><br>
+        주소 : <span></span><br>
+    </p>
+
+    <button id="btnUser3">user3</button>
+    <table border="1">
+        <tr>
+            <th>아이디</th>
+            <th>이름</th>
+            <th>나이</th>
+            <th>주소</th>
+        </tr>
+        <tr>
+
+        </tr>
+    </table>
+
+
+
+</body>
+</html>

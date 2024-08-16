@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>carousel</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        #wrapper ul {
+            width: 280px;
+            height: 390px;
+            border: 1px solid black;
+            position: relative;
+            overflow: hidden;
+            margin: 20px;
+        }
+        #wrapper ul li {
+            list-style: none;
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            transition: left 0.5s ease-out;
+        }
+		
+        #wrapper ul li:nth-child(1){left: 0 ; top: 0;}
+        #wrapper ul li:nth-child(2){left: 100%; top: 0;}
+        #wrapper ul li:nth-child(3){left: 100%; top: 0;}
+
+        #wrapper ul li img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    </style>
+    <script>
+
+        window.onload = function(){
+            const slides = document.getElementsByTagName('li');
+            let current = 0;
+            
+            setInterval(()=>{
+                slides[current].style.left = '-100%';
+                current++;
+                
+                if(current > 2){
+                    current = 0;
+                    slides[1].style.left = '100%';    
+                    slides[2].style.left = '100%';    
+                }
+                slides[current].style.left = '0';
+                
+            },3000);
+
+        };
+
+    </script>
+    
+</head>
+<body>
+    <div id="wrapper">
+        <ul>
+            <li class="image1"><img src="./실습이미지/1.jpg" alt="1"></li>
+            <li class="image2"><img src="./실습이미지/2.jpg" alt="2"></li>
+            <li class="image3"><img src="./실습이미지/3.jpg" alt="3"></li>
+        </ul>
+    </div>
+</body>
+</html>

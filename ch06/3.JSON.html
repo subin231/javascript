@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!--
+        날짜 : 2024/08/12
+        이름 : 조수빈
+        내용 : JSON 실습하기
+    -->
+    
+</head>
+<body>
+    <h3>JSON 실습하기</h3>
+    <script>
+
+        const user = {
+            "uid" : "a101",
+            "name" : "김유신",
+            "age" : "23",
+            "addr" : "김해",
+        };
+
+        document.write('user : '+ user +'<br>');
+        document.write('uid : '+ user.uid +'<br>');
+        document.write('name : '+ user.name +'<br>');
+        document.write('age : '+ user.age +'<br>');
+        document.write('addr : '+ user.addr +'<br>');
+
+        //json 배열
+        const jsonData = {
+            "users" : [
+                {"uid":"a101", "name":"김유신", "age":"23", "addr":"서울" },
+                {"uid":"a102", "name":"홍길동", "age":"25", "addr":"대전" },
+                {"uid":"a103", "name":"김춘추", "age":"26", "addr":"대구" },
+                {"uid":"a104", "name":"강감찬", "age":"27", "addr":"부산" },
+                {"uid":"a105", "name":"연개소문", "age":"34", "addr":"광주" },
+            ]
+        };
+
+        for(const user of jsonData.users){
+            document.write('<p>');
+            document.write('uid : '+ user.uid +'<br>');
+            document.write('name : '+ user.name +'<br>');
+            document.write('age : '+ user.age +'<br>');
+            document.write('addr : '+ user.addr +'<br>');
+            document.write('</p>');
+        }
+
+
+
+        //json 함수
+        const member = {
+            "id" : "a101",
+            "name" : "홍길동",
+            "age" : "25",
+            "hp" : "010-1234-5678"
+        };
+        document.write('member : ' +member+'<br>');
+        
+        
+        //stringfy() --json을 문자열로 반환, client 에서 server로 JSON문자열 전송함.
+        const strMember = JSON.stringify(member);
+        document.write('strMember : ' + strMember + '<br><br>');
+
+        //parse() --문자열을 json 객체 반환, server 에서 client로 전송된 문자열을 parsing
+        const parsedMember = JSON.parse(strMember);
+        document.write('parsedmember : ' + parsedMember + '<br>');
+        document.write('id : ' + parsedMember.id + '<br>');
+        document.write('name : ' + parsedMember.name + '<br>');
+        document.write('age : ' + parsedMember.age + '<br>');
+        document.write('hp : ' + parsedMember.hp + '<br>');
+        
+        
+
+    </script>    
+</body>
+</html>

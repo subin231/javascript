@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>내장객체</title>
+    <script src="js/Account.js"></script>
+      <!--
+        날짜 : 2024-08-06
+        이름 : 조수빈   
+        내용 : 자바스크립트 내장함수 실습하기
+    -->
+</head>
+<body>
+    <h3>내장객체</h3>
+    <script>
+        let wr = new Account('wr','a101','김춘추', 50000);
+        let kb = new Account('kb','a102','홍길동', 30000);
+
+        wr.desposit(5000);
+        kb.withdraw(10000);
+
+        kb.show();
+        wr.show();
+
+        // 사용자 정의 객체
+        const sonata = {
+            brand : '소나타',
+            color : 'black',
+            speed : 0,
+
+            speedUp : function(speed){
+                this.speed += speed;
+            },
+            speedDown : function(speed){
+                this.speed -= speed;
+            },
+            show : function(){
+                document.write('차량명' + this.brand + '<br>');
+                document.write('차량색' + this.color + '<br>');
+                document.write('속도'   + this.speed + '<br>');
+            },
+        };
+
+        sonata.speedUp(60);
+        sonata.speedDown(20);
+        sonata.show();
+
+
+    </script>
+</body>
+</html>
